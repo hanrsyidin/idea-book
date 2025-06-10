@@ -1,0 +1,42 @@
+# File-file sistem operasi dan editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Backend - Python & Django
+# ---------------------------
+# Folder virtual environment
+/backend/venv/
+
+# Folder cache Python
+__pycache__/
+*.pyc
+
+# File database lokal
+*.sqlite3
+
+# File environment
+.env
+
+# Folder media dan static yang di-generate Django
+/media/
+/staticfiles/
+
+
+# Frontend - Node.js & Next.js
+# --------------------------------
+/frontend/node_modules/
+
+# Build output dan file environment lokal
+/frontend/.next/
+/frontend/out/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
