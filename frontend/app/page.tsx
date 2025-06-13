@@ -1,14 +1,14 @@
-// Langkah 1: Definisikan "bentuk" atau "cetakan" dari objek Idea kita
-// Tambahkan interface ini di bagian atas file
+import IdeaForm from "@/components/IdeaForm";
+
 interface Idea {
   id: number;
   title: string;
   content: string;
-  created_at: string; // Diterima sebagai string dari JSON
+  created_at: string;
 }
 
 // Fungsi ini akan berjalan di sisi server untuk mengambil data
-// Langkah 2: Beritahu fungsi getIdeas bahwa ia akan mengembalikan array dari Idea
+// Beritahu fungsi getIdeas bahwa ia akan mengembalikan array dari Idea
 // Tambahkan tipe kembalian: Promise<Idea[]>
 async function getIdeas(): Promise<Idea[]> {
   // Kita panggil API Django kita yang berjalan di port 8000
@@ -23,7 +23,6 @@ async function getIdeas(): Promise<Idea[]> {
   return res.json();
 }
 
-
 // Ini adalah komponen halaman utama kita
 export default async function Home() {
   // Panggil fungsi getIdeas dan tunggu datanya datang
@@ -35,6 +34,8 @@ export default async function Home() {
         <h1 style={{ fontSize: '2.5rem', color: '#333' }}>Buku Ide 💡</h1>
         <p style={{ color: '#666' }}>Semua ide brilian Anda, di satu tempat.</p>
       </header>
+
+      <IdeaForm />
 
       <section style={{ marginTop: '2rem' }}>
         <h2 style={{ fontSize: '1.8rem', color: '#333' }}>Daftar Ide</h2>
