@@ -1,11 +1,11 @@
 import IdeaForm from "@/components/IdeaForm";
+import IdeaItem from "@/components/IdeaItem";
+import { Idea } from "../type/index";
 
-interface Idea {
-  id: number;
-  title: string;
-  content: string;
-  created_at: string;
-}
+// Mendefinisikan tipe untuk props yang diterima komponen ini
+type Props = {
+  idea: Idea;
+};
 
 // Fungsi ini akan berjalan di sisi server untuk mengambil data
 // Beritahu fungsi getIdeas bahwa ia akan mengembalikan array dari Idea
@@ -37,24 +37,17 @@ export default async function Home() {
 
       <IdeaForm />
 
-      <section style={{ marginTop: '2rem' }}>
-        <h2 style={{ fontSize: '1.8rem', color: '#333' }}>Daftar Ide</h2>
-        
-        {/* Jika tidak ada ide, tampilkan pesan */}
+      <section className="mt-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Daftar Ide</h2>
+
         {ideas.length === 0 && (
-          <p style={{ color: '#888', fontStyle: 'italic' }}>Belum ada ide. Jadilah yang pertama!</p>
+          <p className="text-gray-500 italic">Belum ada ide. Jadilah yang pertama!</p>
         )}
 
-        {/* Jika ada ide, tampilkan dalam bentuk daftar */}
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+        {/* Gunakan komponen IdeaItem di sini */}
+        <ul className="space-y-4">
           {ideas.map((idea) => (
-            <li key={idea.id} style={{ background: '#f9f9f9', border: '1px solid #eee', borderRadius: '8px', padding: '1rem', marginBottom: '1rem' }}>
-              <h3 style={{ margin: '0 0 0.5rem 0', color: '#0070f3' }}>{idea.title}</h3>
-              <p style={{ margin: 0, color: '#444' }}>{idea.content}</p>
-              <small style={{ display: 'block', marginTop: '1rem', color: '#999' }}>
-                Dibuat pada: {new Date(idea.created_at).toLocaleString('id-ID')}
-              </small>
-            </li>
+            <IdeaItem key={idea.id} idea={idea} />
           ))}
         </ul>
       </section>
